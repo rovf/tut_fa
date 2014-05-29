@@ -11,6 +11,12 @@ group :development do
 end
 # gem 'sqlite3'
 
+# In order to use Heroku for deploying to production, we need Postgres
+group :production do
+  gem 'pg', '0.15.1'
+  gem 'rails_12factor', '0.0.2' # Needed by Heroku for static assets
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails',   '4.0.1'
 # gem 'sass-rails', '~> 4.0.3'
