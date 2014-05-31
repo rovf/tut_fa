@@ -1,3 +1,13 @@
 <% provide(:title, 'Home') %>
-<h1>FirstAppの家</h1>
-<p>Find this <%= yield(:title) %> in app/views/static_pages/home.html.erb</p>
+
+<!-- css classes btn*, center and hero-unit are for Bootstrap framework -->
+
+<div class="center hero-unit">
+    <h1>FirstAppの家</h1>
+    <p>Find this <%= yield(:title) %> in app/views/static_pages/home.html.erb</p>
+
+    <%= link_to 'Sign up', '#', class: 'btn btn-large btn-primary' %>
+
+</div>
+
+<%= link_to image_tag('rails.png',alt:Rails), 'http://rubyonrails.org/' %>
