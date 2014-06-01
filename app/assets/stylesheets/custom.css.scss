@@ -1,0 +1,82 @@
+/* Including the Bootstrap CSS Framework */
+@import "bootstrap";
+
+html {
+  /*
+   * scroll: content is clipped, and scrolling is provided.
+   * The default value would be "visible", i.e. content is not clipped,
+   * and it might be rendered outside the visible area.
+   */
+  overflow-y: scroll;
+}
+
+body {
+  /*
+   * Bootstrap puts the naviagation bar to the top of the page, because we are
+   * using the class navbar-fixed-top. Therfore have to provide some space for
+   * it.
+   */
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  /*
+   * Allows the user to resize the area. Not supported currently by IE and
+   * Opera.
+   */
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #999;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+#logo:hover {
+  color: #126651;
+  text-decoration: none;
+}
