@@ -10,6 +10,13 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ * Note: The lines below are used by the Sprockets gem to combine the various stylesheets into single
+ *       files.
+ *
+ * Include all CSS files in app/assets/styleshets, including subdirectories:
+ *
  *= require_tree .
+ *
+ * By placing this at the end, it guarantees that this file is included last.
  *= require_self
  */

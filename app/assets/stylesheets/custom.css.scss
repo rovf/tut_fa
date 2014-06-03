@@ -1,6 +1,9 @@
 /* Including the Bootstrap CSS Framework */
 @import "bootstrap";
 
+$lightGray: $grayLight; /* grayLight comes from Bootstrap */
+$grayMediumLight: #eaeaea;
+
 html {
   /*
    * scroll: content is clipped, and scrolling is provided.
@@ -33,10 +36,10 @@ textarea {
 
 .center {
   text-align: center;
-}
-
-.center h1 {
-  margin-bottom: 10px;
+  /* SASS allows nested declarations */
+  h1 {
+    margin-bottom: 10px;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -56,7 +59,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #999;
+  color: $lightGray;
 }
 
 p {
@@ -74,35 +77,40 @@ p {
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
-}
 
-#logo:hover {
-  color: #126651;
-  text-decoration: none;
+  /* &:hover in SASS is equivalent to having #logo:hover as a separate CSS rule.
+   * The &: prefix refers to the parent element.
+   */
+  &:hover {
+    color: #126651;
+    text-decoration: none;
+  }
 }
 
 footer {
   margin-top:45px;
   padding-top:5px;
-  border-top:1px solid #eaeaea;
-  color:#999;
-}
+  border-top:1px solid $grayMediumLight;
+  color:$lightGray;
 
-footer a { color: #555; }
+  a {
+    color: #555;
+    &:hover {
+      color:$grayDarker;
+      background-color:green;
+    }
+  }
 
-footer a:hover {
-  color:#222;
-  background-color:green;
-}
+  small { float:left; }
 
-footer small { float:left; }
+  ul {
+    float:right;
+    list-style:none;
 
-footer ul {
-  float:right;
-  list-style:none;
-}
+    li {
+      float:left;
+      margin-left:10px;
+    }
+  }
 
-footer ul li {
-  float:left;
-  margin-left:10px;
 }
