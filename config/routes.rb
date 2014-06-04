@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  get 'static_pages/home'
+  root 'static_pages#home' # This is equivalent to
+  #    match '/', to: 'static_pages#home', via: 'get'
+  # Creates root_path and root_url
 
-  get 'static_pages/help'
-
-  get 'static_pages/about'
+  match '/help', to: 'static_pages#help', via: 'get'
+  get '/about', to: 'static_pages#about', via: 'get' # match & get is the same
+  match '/contact', to: 'static_pages#contact', via: 'get'
+  # This creates named routes, i.e. about_path and about_url
 
   resources :microposts
 
