@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  # Should be get rid off later, because creating a user should not be done as a GET
+  get 'users/new'
+
   root 'static_pages#home' # This is equivalent to
   #    match '/', to: 'static_pages#home', via: 'get'
   # Creates root_path and root_url
@@ -7,6 +11,8 @@ Rails.application.routes.draw do
   get '/about', to: 'static_pages#about', via: 'get' # match & get is the same
   match '/contact', to: 'static_pages#contact', via: 'get'
   # This creates named routes, i.e. about_path and about_url
+
+  match '/signup', to: 'users#new', via: 'get'
 
   resources :microposts
 
