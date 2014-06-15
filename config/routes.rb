@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  # Should be get rid off later, because creating a user should not be done as a GET
-  get 'users/new'
-
   root 'static_pages#home' # This is equivalent to
   #    match '/', to: 'static_pages#home', via: 'get'
   # Creates root_path and root_url

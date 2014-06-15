@@ -14,5 +14,9 @@
         <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
+    <!-- Produces HTML code to show the argument in YAML format.
+         It is wrapped in <pre class="debug_dump"></pre>
+    -->
+    <%= debug(params) if Rails.env.development? %>
 </body>
 </html>

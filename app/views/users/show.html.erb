@@ -1,3 +1,11 @@
+<div class="row"> <!-- defined in bootstrap -->
+    <aside class="span4"> <!-- span4 defined in bootstrap. aside works in FF 4+ and Safari 5+ -->
+        <section> <!-- FF4, Safari5 -->
+            <!-- gravatar_for is defined in users_helper.rb -->
+            <h1><%= gravatar_for @user %><%= @user.name %></h1>
+        </section>
+    </aside>
+</div>
 <p id="notice"><%= notice %></p>
 
 <p>
