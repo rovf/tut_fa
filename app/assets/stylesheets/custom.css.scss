@@ -1,14 +1,27 @@
+@mixin box-sizing0 {
+  -moz-box-sizing:border-box; /* Firefox 28 and earlier */
+  -webkit-box-sizing:border-box; /* Safari 3 */
+  box-sizing:border-box; /* Default would be content-box */
+}
+
+
+input, textarea, select, .uneditable-input {
+  border: 3px solid #a49d4e !important;
+  width: 100% !important;
+  margin-bottom:15px !important;
+  @include box-sizing0;
+}
+
+input {
+  height: auto !important;
+}
+
 /* SASS directive - Including the Bootstrap CSS Framework */
 @import "bootstrap";
 
 $lightGray: $grayLight; /* grayLight comes from Bootstrap */
 $grayMediumLight: #eaeaea;
 
-@mixin box-sizing {
-  -moz-box-sizing:border-box; /* Firefox 28 and earlier */
-  -webkit-box-sizing:border-box; /* Safari 3 */
-  box-sizing:border-box; /* Default would be content-box */
-}
 
 html {
   /*
@@ -93,6 +106,19 @@ p {
   }
 }
 
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+}
+
 footer {
   margin-top:45px;
   padding-top:5px;
@@ -157,5 +183,5 @@ aside {
     margin-top: 45px;
     border-width: 3px;
     border-color: green;
-    @include box-sizing;
+    @include box-sizing0;
 }

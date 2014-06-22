@@ -15,6 +15,7 @@
  *
  * Include all CSS files in app/assets/styleshets, including subdirectories:
  *
+ *= custom
  *= require_tree .
  *
  * By placing this at the end, it guarantees that this file is included last.
