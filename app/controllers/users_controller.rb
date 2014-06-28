@@ -11,10 +11,11 @@ class UsersController < ApplicationController
      # ("ActiveModel::ForbiddenAttributesError") for security reason.
      @user=User.new(user_params)
      if @user.save
+        sign_in @user
         flash[:success]='You are in!'
-         redirect_to @user
+        redirect_to @user
      else
-         render 'new'
+        render 'new'
      end
   end
 
