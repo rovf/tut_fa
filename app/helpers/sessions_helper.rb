@@ -18,6 +18,10 @@ module SessionsHelper
       @current_user||=User.find_by(remember_token: User.digest_token(cookies[:remember_token]))
    end
 
+   def current_user?(u)
+      u==current_user
+   end
+
    def signed_in?
       !current_user.nil?
    end
@@ -26,5 +30,15 @@ module SessionsHelper
       current_user.update_attribute(:remember_token, User.digest_token(User.new_remember_token))
       cookies.delete(:remember_token)
       self.current_user=nil
+   end
+
+   def store_location
+      # We can only remember get request, because redirect_to is also via 'get'
+      session[:return_to]=request.url if request.get?
+   end
+
+   def redirect_back_or(default)
+      redirect_to(session[:return_to]||default)
+      session.delete(:return_to)
    end
 end

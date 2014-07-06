@@ -1,27 +1,15 @@
-<h1>Listing users</h1>
+<h1>All our happy users</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%# Because this erb file is located in directory 'users', will_paginate expects a variable named '@users' %>
+<%# Note that will_paginate creates a :page parameter in the request %>
+<%= will_paginate previous_label: 'hintri', next_label: 'viri' %>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<ul class="users">
+        <%# render user : This implicitly looks for a partial users/_user.html.erb %>
+        <%# render @users : This implicitly iterates over @users and calls render user for each element %>
+    <%= render @users %>
+</ul>
 
-<br>
+<%= will_paginate %>
 
 <%= link_to 'New User', new_user_path %>
