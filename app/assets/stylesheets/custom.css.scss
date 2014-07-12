@@ -170,6 +170,10 @@ aside {
       margin-top: 0px;
     }
   }
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
 }
 .gravatar {
   float: left;
@@ -189,6 +193,18 @@ aside {
     }
   }
 }
+
+.microposts {
+  list-style: none;
+  margin: 10px 0 0 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #6a1988;
+  }
+}
+.content { display: block }
+.timestamp { color: #f66741 }
+
 .debug_dump {
     clear: both;
     float: left;

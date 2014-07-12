@@ -32,6 +32,15 @@ module SessionsHelper
       self.current_user=nil
    end
 
+   def signed_in_user
+     unless signed_in?
+        store_location
+        # notice: parameter sets flash[:notice]
+        # (but we don't have error: or success:)
+        redirect_to signin_url, notice: "Please sign in!"
+     end
+   end
+
    def store_location
       # We can only remember get request, because redirect_to is also via 'get'
       session[:return_to]=request.url if request.get?

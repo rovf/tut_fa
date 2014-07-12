@@ -1,0 +1,11 @@
+<%= form_for(@micropost) do |f| %>
+    <%# shared/error_messages needs to know whether the error messages come from      %>
+    <%# user or from micropost. "object: f.object" creates a variable named 'object', %>
+    <%# which is available in the partial. Since we are here in a micropost form,     %>
+    <%# this object is initialized with the micropost object.                         %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="field">
+        <%= f.text_area :content, placeholder: "Write a new micropost here..." %>
+    </div>
+    <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>

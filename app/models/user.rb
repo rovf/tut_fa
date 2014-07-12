@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-      has_many :microposts
+      has_many :microposts, dependent: :destroy
       validates :name,
                 presence: true,
                 uniqueness: true,

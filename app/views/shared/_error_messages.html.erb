@@ -1,10 +1,13 @@
-<% if @user.errors.any? %>
+<%# This should work for all types of objects. We assume that the object is %>
+<%# stored in a variable 'object', which is set in render as, i.e.,         %>
+<%# object: formobject.object %>
+<% if object.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
-      The form contains <%= pluralize(@user.errors.count, "error") %>.
+      The form contains <%= pluralize(object.errors.count, "error") %>.
     </div>
     <ul>
-    <% @user.errors.full_messages.each do |msg| %>
+    <% object.errors.full_messages.each do |msg| %>
       <li>* <%= msg %></li>
     <% end %>
     </ul>

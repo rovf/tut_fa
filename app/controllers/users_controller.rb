@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
   def show
      @user=User.find(params[:id])
+     @microposts=@user.microposts.paginate(page:params[:page])
   end
   def create
      # The following ("parameter mass assignment", because params[:user]
@@ -50,15 +51,6 @@ private
 
   def user_params
      params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
-
-  def signed_in_user
-     unless signed_in?
-        store_location # defined in session_helpers
-        # notice: parameter sets flash[:notice]
-        # (but we don't have error: or success:)
-        redirect_to signin_url, notice: "Please sign in!"
-     end
   end
 
   # Side effect: Sets @user
