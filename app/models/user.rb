@@ -29,6 +29,11 @@ class User < ActiveRecord::Base
       Digest::SHA1.hexdigest(token.to_s)
    end
 
+   def feed
+      # Feed for this user. Will later contain microposts of followed users too.
+      Micropost.where("user_id = ?",id)
+   end
+
 private
 
    def create_remember_token
