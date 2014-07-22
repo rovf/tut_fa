@@ -2,6 +2,17 @@ class User < ActiveRecord::Base
 
       has_many :microposts, dependent: :destroy
       has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+      # The followed users are those in relationships, which have followed_id,
+      # but we don't want to access them by user.followeds, but by the more
+      # natural user.followed_users
+      has_many :followed_users, through: :relationships, source: :followed
+      # We need to provide the class_name, because otherwise Rails would assume
+      # a class ReverseRelationship
+      has_many :reverse_relationships, foreign_key: "followed_id", dependent: :destroy, class_name: "Relationship"
+      # We could also omit source, because Rail would by default conclude
+      # from :followers, that the source must be :follower
+      has_many :followers, through: :reverse_relationships, source: :follower
+
       validates :name,
                 presence: true,
                 uniqueness: true,
@@ -33,6 +44,21 @@ class User < ActiveRecord::Base
    def feed
       # Feed for this user. Will later contain microposts of followed users too.
       Micropost.where("user_id = ?",id)
+   end
+
+   # Is this user following another user?
+   def following?(other_user)
+      relationships.find_by(followed_id: other_user.id)
+   end
+
+   # Establish following
+   def follow!(other_user)
+      relationships.create!(followed_id: other_user.id)
+   end
+
+   # Unestablish following
+   def unfollow!(other_user)
+      relationships.find_by(followed_id: other_user.id).destroy
    end
 
 private
