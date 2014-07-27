@@ -42,8 +42,9 @@ class User < ActiveRecord::Base
    end
 
    def feed
-      # Feed for this user. Will later contain microposts of followed users too.
-      Micropost.where("user_id = ?",id)
+      # Feed for this user.
+      # Micropost.where("user_id = ?",id)
+      Micropost.from_users_followed_by(self) # This includes, by definition, self
    end
 
    # Is this user following another user?
